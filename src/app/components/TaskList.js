@@ -1,65 +1,43 @@
 import React from "react";
+import { connect } from "react-redux";
 
-import AddTaskForm from "./AddTaskForm";
-import Task from "./Task";
+//import AddTaskForm from "./AddTaskForm";
+//import Task from "./Task";
+import { addTask } from "../Reducers/Actions";
 
 class TaskList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            isFormVisible: false,
-            tasks: []
-        }
-    }
-    static get prefix() {
-        return "todolist_";
+        // this.state = {
+        //     isFormVisible: false
+        // }
     }
 
-    addTask(event) {
-        event.preventDefault();
-
-        const tdTitle = event.target.td_title.value;
-        const tdDesc = event.target.td_desc.value;
-        const tdTime = event.target.td_time.value;
-
-        var task = {tdTitle, tdDesc, tdTime};
-
-        //let key = (`${this.prefix()}_0`);
-
-        localStorage.setItem("todolist_0", `${tdTitle}&${tdDesc}&${tdTime}`);
-
-        this.state.tasks.push(task);
-
-        this.setState({
-            tasks: this.state.tasks
-        });
-
-    }
-
-    removeTask(storageKey) {
-        localStorage.removeItem(storageKey);
-    }
-
-    switchFormVisible() {
-        this.setState({
-            isFormVisible: !this.state.isFormVisible
-        });
-    }
-
-    loadTasks() {
-        //let arr =
-    }
     render() {
-        const popup = (this.state.isFormVisible ? <AddTaskForm onSubmitAction={this.addTask.bind(this)} /> : null);
-        var tasks = (this.state.tasks.length) ? this.state.tasks.map(el => <Task data={el}/>) : null;
+        //const popup = (this.state.isFormVisible ? <AddTaskForm onSubmitAction={this.addTask.bind(this)} /> : null);
+        //var tasks = (this.props.tasks.length) ? this.props.tasks.map(el => <Task data={el}/>) : null;
         return(
-            <div className="container">
-                <button onClick={this.switchFormVisible.bind(this)} className="btn btn-primary">Add task</button>
-                { popup }
-                { tasks }
+            <div>
+                <p>Number: {this.props.tasks}</p>
+                <button onClick={ () => (this.props.addTask({id:0,title:"Test"})) }>Add</button>
             </div>
         );
     }
 }
 
-export default TaskList;
+
+const mapStateToProps = (state) => {
+    return {
+        tasks: state.tasks
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addTask: (task) => {
+            dispatch(addTask(task));
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

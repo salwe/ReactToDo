@@ -1,14 +1,18 @@
 import React from 'react';
 import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
-import { Home } from "./components/Home";
+import App from "./components/App";
+import { tasks } from"./Reducers/Reducer";
 
-class App extends React.Component {
-    render() {
-        return(
-            <Home />
-        );
-    }
-}
 
-render(<App />, document.getElementById('content'));
+
+const store = createStore(tasks);
+
+
+render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('content'));
