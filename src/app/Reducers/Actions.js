@@ -4,5 +4,5 @@ let taskId = 0;
 export const addTask = (task) => ({
     type: ADD_TASK,
     id: taskId++,
-    task
+    text: task
 });

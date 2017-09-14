@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addTask } from "../Reducers/Actions";
 
-let AddTask = ({ dispatch }) => {
+const AddTask = ({ dispatch }) => {
     let input;
 
     return (
@@ -10,19 +10,17 @@ let AddTask = ({ dispatch }) => {
             <form onSubmit={e => {
                 e.preventDefault();
                 if (!input.value.trim()) {
-                  return
+                  return;
                 }
+                //console.log(input.value);
                 dispatch(addTask(input.value));
-                input.value = ''
+                input.value = '';
                 }}>
                 <input ref={node => { input = node }} />
-                <button type="submit">
-                    Add Task
-                </button>
+                <button type="submit">Add Task</button>
             </form>
         </div>
     )
 };
-AddTask = connect()(AddTask);
 
-export default AddTask;
+export default connect()(AddTask);
