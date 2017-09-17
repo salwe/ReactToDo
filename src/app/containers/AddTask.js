@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTask } from "../Reducers/Actions";
+import { addTask } from "../actions/tasksActions";
 
 const AddTask = ({ dispatch }) => {
     let input;

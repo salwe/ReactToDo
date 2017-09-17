@@ -1,8 +1,8 @@
 import React from "react";
 
 import NavBar from "./NavBar";
-import AddTask from "./AddTask";
-import TaskList from "./TaskList";
+import AddTask from "../containers/AddTask";
+import TaskList from "../containers/TaskList";
 
 class App extends React.Component {
     render() {

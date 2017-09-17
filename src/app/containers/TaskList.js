@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import Task from "./Task";
-import { removeTask } from "../Reducers/Actions";
+import Task from "../components/Task";
+import { removeTask } from "../actions/tasksActions";
 
 class TaskList extends React.Component {
     render() {

@@ -1,4 +1,4 @@
-import { ADD_TASK, REMOVE_TASK } from "./Actions";
+import { ADD_TASK, REMOVE_TASK } from "../actions/tasksActions";
 
 export const tasks = (state = [], action) => {
     switch (action.type) {
