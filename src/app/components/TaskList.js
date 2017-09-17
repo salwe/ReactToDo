@@ -13,7 +13,7 @@ class TaskList extends React.Component {
                 </div>
             );
         }
-        return <p>Empty</p>;
+        return <p>Task list is empty</p>;
     }
 }
 const mapStateToProps = (state) => {
