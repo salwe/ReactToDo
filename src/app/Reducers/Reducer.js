@@ -1,15 +1,16 @@
-import { ADD_TASK } from "./Actions";
+import { ADD_TASK, REMOVE_TASK } from "./Actions";
 
-//reducers
 export const tasks = (state = [], action) => {
     switch (action.type) {
         case ADD_TASK:
-            console.log(state);
+            //console.log(state);
             return [...state,
                 {
                     id: action.id,
-                    title: action.text
+                    title: action.title
                 }];
+        case REMOVE_TASK:
+            return state.filter(el => el.id != action.id);
         default:
             return state;
     }

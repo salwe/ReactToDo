@@ -1,27 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 
-//import AddTaskForm from "./AddTaskForm";
-//import Task from "./Task";
+import Task from "./Task";
 
 class TaskList extends React.Component {
-
     render() {
-        console.log(this.props);
-        if (this.props.tasks) {
+        if (this.props.tasks.length) {
             return (
-                <ul>
-                    {this.props.tasks.map(el => <li>el.title</li>)}
-                </ul>
+                <div className="row">
+                    {this.props.tasks.map(el => <Task data={el} key={el.id}/>)}
+                </div>
             );
         }
         return <p>Empty</p>;
     }
 }
 const mapStateToProps = (state) => {
-    console.log(`From map ${state}`);
+    //console.log(state);
     return {
-        tasks: state.tasks
+        tasks: state
     };
 };
 export default connect(mapStateToProps)(TaskList);
