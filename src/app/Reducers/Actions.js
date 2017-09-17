@@ -9,6 +9,6 @@ export const addTask = (title) => ({
 });
 
 export const removeTask = (id) => ({
-    type: ADD_TASK,
+    type: REMOVE_TASK,
     id
 });

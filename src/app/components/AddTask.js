@@ -6,13 +6,12 @@ const AddTask = ({ dispatch }) => {
     let input;
 
     return (
-        <div>
+        <div className="mt-3 mb-5">
             <form onSubmit={e => {
                 e.preventDefault();
                 if (!input.value.trim()) {
                   return;
                 }
-                //console.log(input.value);
                 dispatch(addTask(input.value));
                 input.value = '';
                 }}>
